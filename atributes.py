@@ -1,4 +1,4 @@
-def effectiveness(type_atk, type_def):
+def effectiveness(type_atk, type_def, _atk):
 
     """
         effectiveness(type1, type2) --> The paraments of function are str.
@@ -23,12 +23,12 @@ def effectiveness(type_atk, type_def):
     
     for i in range(0, len(types)):
         if type_atk == types[i][0]:
-            if type_def in types[i][1]:  # If attacker is weak against the defender.
-                return 0.5
-            elif type_def in types[i][2]: # If attacker is strong defender.
-                return 2
-            else:   # If attacker and defender are the same type.
-                return 1
+            if type_def in types[i][2]:
+                return 3
+            else:
+                return _atk / 2 - 10
+        else:
+            return 1
 
 
 def WhoAttack(pokemon1, v1, pokemon2, v2):

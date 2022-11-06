@@ -1,7 +1,8 @@
 import atributes
+import random
 
 def battle(typeAtk, typeDef, _atk, _def):
-    """ formula to calculate hit points """
-    valueOfAtk = 5 * (_atk / _def) * atributes.effectiveness(typeAtk, typeDef)
-    return int(valueOfAtk)
+    valueOfAtk = int(5 * (_atk // _def) * atributes.effectiveness(typeAtk, typeDef, _atk) + random.randint(1, 4))
+    return valueOfAtk if valueOfAtk < 60 else valueOfAtk - 60
     
+

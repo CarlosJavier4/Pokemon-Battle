@@ -1,3 +1,5 @@
+from random import randint
+
 def effectiveness(type_atk, type_def, _atk):
 
     """
@@ -30,6 +32,9 @@ def effectiveness(type_atk, type_def, _atk):
         else:
             return 1
 
+def battle(typeAtk, typeDef, _atk, _def):
+    valueOfAtk = int(5 * (_atk // _def) * atributes.effectiveness(typeAtk, typeDef, _atk) + randint(1, 4))
+    return valueOfAtk if valueOfAtk < 60 else valueOfAtk - 60
 
 def WhoAttack(pokemon1, v1, pokemon2, v2):
     return (pokemon1 if v1 >= v2 else pokemon2)

@@ -14,7 +14,7 @@ def effectiveness(type_atk, type_def, _atk):
         
     """
     
-    # type_atk, type_def  = type_atk.lower(), type_def.lower()
+    type_atk, type_def  = type_atk.lower(), type_def.lower() # Eliminar las mayusculas de pokeball.py en los tipos, asi no hay que usar lower()
     
     types = [
         ['fire', ['water', 'rock', 'earth'], ['steel', 'ice', 'boil', 'bug']],

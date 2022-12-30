@@ -16,15 +16,15 @@ def effectiveness(type_atk, type_def, _atk):
     
     type_atk, type_def  = type_atk.lower(), type_def.lower()
     
-    types = [
-        ['fire', ['water', 'rock', 'earth'], ['steel', 'ice', 'boil', 'bug']],
-        ['water', ['electricity', 'boil'], ['fire', 'earth', 'rock']],
-        ['boil', ['fire', 'ice', 'poison', 'flying', 'bug'], ['water', 'earth', 'rock']],
-        ['electricity', ['earth'], ['water', 'flying']] 
-    ]
+    types = (
+        ('fire', ('water', 'rock', 'earth'), ('steel', 'ice', 'boil', 'bug')),
+        ('water', ('electricity', 'boil'), ('fire', 'earth', 'rock')),
+        ('boil', ('fire', 'ice', 'poison', 'flying', 'bug'), ('water', 'earth', 'rock')),
+        ('electricity', ('earth'), ('water', 'flying')) 
+    )
     
-    for i in range(0, len(types)):
-        if type_atk == types[i][0]:
+    for i in range(len(types)):
+        if type_atk in types[i][0]:
             if type_def in types[i][2]:
                 return 3
             else:
@@ -32,10 +32,15 @@ def effectiveness(type_atk, type_def, _atk):
         else:
             return 1
 
-def battle(typeAtk, typeDef, _atk, _def):
-    valueOfAtk = int(5 * (_atk // _def) * atributes.effectiveness(typeAtk, typeDef, _atk) + randint(1, 4))
-    return valueOfAtk if valueOfAtk < 60 else valueOfAtk - 60
 
 def WhoAttack(pokemon1, v1, pokemon2, v2):
     return (pokemon1 if v1 >= v2 else pokemon2)
     
+def battle(typeAtk, typeDef, _atk, _def):
+    valueOfAtk = int(5 * (_atk // _def) * effectiveness(typeAtk, typeDef, _atk) + randint(1, 4))
+    return (valueOfAtk if valueOfAtk < 60 else valueOfAtk - 60)
+
+def checkPosition(number, tam):
+    while(number > tam):
+        number = int(input('Wrong data, try again: '))
+    return number
